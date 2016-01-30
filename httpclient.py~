@@ -50,32 +50,16 @@ class HTTPClient(object):
             print 'Socket creation failed. Error code: ' + str(errNo[0]) +\
                 ', Error message: ' + errNo[1]
             sys.exit()
-
-        connection.connect((ipAddress, port))
-        return connection
+        return None
 
     def get_code(self, data):
-        httpCode = 500
-        if data.startswith('HTTP/1.'):
-            httpCode = int(data[9:12])
-        return httpCode
+        return None
 
     def get_headers(self,data):
-        httpHeaders = None
-        endLocation = data.find("\r\n\r\n")
-
-        if endLocation != -1:
-            httpHeaders = data[:endLocation]
-
-        return httpHeaders
+        return None
 
     def get_body(self, data):
-        httpBody = None
-        endLocation = data.find("\r\n\r\n")
-
-        if endLocation != -1:
-            httpBody = data[endLocation + 4:]
-        return httpBody
+        return None
 
     # read everything from the socket
     def recvall(self, sock):
